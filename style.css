@@ -1,45 +1,61 @@
+/* --- Aturan Dasar & Reset --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-body { background: #f4f7f6; color: #333; scroll-behavior: smooth; }
-.container { max-width: 1100px; margin: auto; padding: 0 20px; }
+body { background: #f4f7f6; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+.container { max-width: 1100px; margin: auto; padding: 0 15px; }
 
-nav { background: #fff; padding: 15px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+/* --- Navigasi --- */
+nav { background: #fff; padding: 10px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
 .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-size: 22px; font-weight: 700; }
+.logo { font-size: 20px; font-weight: 700; }
 .logo span { color: #007bff; }
-.nav-links { list-style: none; display: flex; align-items: center; }
-.nav-links li { margin-left: 20px; }
-.nav-links a { text-decoration: none; color: #333; font-weight: 600; }
-.cart-btn { background: #007bff; color: #fff; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 10px; }
+.nav-links a { text-decoration: none; color: #333; font-weight: 600; font-size: 14px; }
+.cart-btn { background: #007bff; color: #fff; padding: 6px 12px; border-radius: 20px; cursor: pointer; font-size: 13px; font-weight: bold; }
 
-header { background: #007bff; color: #fff; padding: 80px 0; text-align: center; }
-header h1 { font-size: 40px; margin-bottom: 10px; }
-.btn-main { display: inline-block; margin-top: 20px; background: #fff; color: #007bff; padding: 12px 25px; text-decoration: none; border-radius: 25px; font-weight: 700; }
+/* --- Header Hero --- */
+header { background: #007bff; color: #fff; padding: 60px 20px; text-align: center; }
+header h1 { font-size: 32px; margin-bottom: 10px; }
+header p { font-size: 15px; opacity: 0.9; line-height: 1.4; }
+.btn-main { display: inline-block; margin-top: 20px; background: #fff; color: #007bff; padding: 10px 20px; text-decoration: none; border-radius: 25px; font-weight: 700; font-size: 14px; }
 
-.title { text-align: center; margin: 40px 0; }
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-.card { background: #fff; padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-.card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
-.card h3 { font-size: 16px; margin-bottom: 5px; }
-.card p { font-weight: 700; color: #007bff; margin-bottom: 10px; }
-.card button { background: #333; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer; width: 100%; }
+/* --- Katalog Produk --- */
+.title { text-align: center; margin: 30px 0; font-size: 24px; }
+.product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; } /* 2 Kolom di HP */
+.card { background: #fff; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+.card img { width: 100%; height: 120px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; }
+.card h3 { font-size: 14px; margin-bottom: 5px; height: 35px; overflow: hidden; }
+.card p { font-weight: 700; color: #007bff; margin-bottom: 10px; font-size: 14px; }
+.card button { background: #333; color: #fff; border: none; padding: 8px; border-radius: 5px; cursor: pointer; width: 100%; font-size: 13px; }
 
-.sidebar { position: fixed; right: -350px; top: 0; width: 320px; height: 100%; background: #fff; box-shadow: -5px 0 15px rgba(0,0,0,0.1); transition: 0.3s; z-index: 1000; padding: 20px; display: flex; flex-direction: column; }
-.sidebar.active { right: 0; }
-.side-header { display: flex; justify-content: space-between; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
-#items { flex-grow: 1; overflow-y: auto; padding: 15px 0; }
-.item-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; }
-.btn-wa { background: #25d366; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: 700; }
-
-footer { text-align: center; padding: 30px; margin-top: 40px; font-size: 12px; color: #777; }
-/* Supaya footer keranjang tidak tenggelam di HP */
-.side-footer {
-    background: #fff;
-    padding: 20px;
-    position: sticky;
-    bottom: 0;
-    box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
+/* --- Sidebar Keranjang (INI PERBAIKAN UTAMANYA) --- */
+.sidebar { 
+    position: fixed; right: -100%; top: 0; 
+    width: 85%; /* Tidak full agar masih terlihat latar belakangnya sedikit */
+    max-width: 350px;
+    height: 100%; background: #fff; 
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2); 
+    transition: 0.3s ease; z-index: 1000; 
+    display: flex; flex-direction: column; 
 }
+.sidebar.active { right: 0; }
 
-.sidebar {
-    width: 100%; /* Agar full layar saat dibuka di HP */
+.side-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding: 20px; }
+#items { flex-grow: 1; overflow-y: auto; padding: 15px; }
+.item-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 10px; border-bottom: 1px solid #f9f9f9; padding-bottom: 5px; }
+
+/* Footer Keranjang di bagian bawah layar */
+.side-footer { 
+    padding: 20px; border-top: 1px solid #ddd; background: #fafafa;
+}
+.side-footer h4 { margin-bottom: 15px; font-size: 16px; display: flex; justify-content: space-between; }
+.btn-wa { background: #25d366; color: #fff; border: none; padding: 15px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: 700; font-size: 15px; }
+
+/* --- Footer Website --- */
+footer { text-align: center; padding: 30px; margin-top: 40px; font-size: 12px; color: #777; background: #eee; }
+
+/* --- Responsivitas untuk Layar Lebih Besar (Tablet/PC) --- */
+@media (min-width: 768px) {
+    .product-grid { grid-template-columns: repeat(4, 1fr); }
+    header h1 { font-size: 48px; }
+    .sidebar { width: 350px; right: -350px; }
 }
