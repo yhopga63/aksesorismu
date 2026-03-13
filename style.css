@@ -29,4 +29,17 @@ header h1 { font-size: 40px; margin-bottom: 10px; }
 #items { flex-grow: 1; overflow-y: auto; padding: 15px 0; }
 .item-row { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 10px; }
 .btn-wa { background: #25d366; color: #fff; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: 700; }
+
 footer { text-align: center; padding: 30px; margin-top: 40px; font-size: 12px; color: #777; }
+/* Supaya footer keranjang tidak tenggelam di HP */
+.side-footer {
+    background: #fff;
+    padding: 20px;
+    position: sticky;
+    bottom: 0;
+    box-shadow: 0 -10px 20px rgba(0,0,0,0.1);
+}
+
+.sidebar {
+    width: 100%; /* Agar full layar saat dibuka di HP */
+}
