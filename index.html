@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aksesorismu.shop | Gadget Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body id="home">
+
+    <nav>
+        <div class="container nav-wrapper">
+            <div class="logo">Aksesorismu<span>.shop</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Beranda</a></li>
+                <li><a href="#produk">Produk</a></li>
+                <li class="cart-btn" onclick="toggleCart()">
+                    🛒 <span id="cart-count">0</span> Item
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>Gadgetmu, Gayamu.</h1>
+            <p>Aksesoris pilihan untuk perlindungan maksimal dan tampilan estetik Smartphone-mu.</p>
+            <a href="#produk" class="btn-main">Belanja Sekarang</a>
+        </div>
+    </header>
+
+    <section id="produk" class="container">
+        <h2 class="title">Koleksi Produk</h2>
+        <div class="product-grid">
+            <div class="card"><img src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?w=300"><h3>TG Anti-Spy</h3><p>Rp 25.000</p><button onclick="addToCart('TG Anti-Spy', 25000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=300"><h3>Aesthetic Case</h3><p>Rp 45.000</p><button onclick="addToCart('Aesthetic Case', 45000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=300"><h3>Pelindung Kabel</h3><p>Rp 5.000</p><button onclick="addToCart('Pelindung Kabel', 5000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1603313011101-31c726ad6b0b?w=300"><h3>Clear Case</h3><p>Rp 35.000</p><button onclick="addToCart('Clear Case', 35000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1592890288564-76628a30a657?w=300"><h3>Lens Protector</h3><p>Rp 15.000</p><button onclick="addToCart('Lens Protector', 15000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1585338107529-13afc5f02586?w=300"><h3>Kabel Fast Charging</h3><p>Rp 30.000</p><button onclick="addToCart('Kabel Fast Charge', 30000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=300"><h3>Holder Gurita</h3><p>Rp 10.000</p><button onclick="addToCart('Holder Gurita', 10000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1521334884235-9856f90117b3?w=300"><h3>Pouch Anti Air</h3><p>Rp 20.000</p><button onclick="addToCart('Pouch Anti Air', 20000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1541140134513-85a161dc4a00?w=300"><h3>3D Character Case</h3><p>Rp 55.000</p><button onclick="addToCart('Character Case', 55000)">Tambah</button></div>
+            <div class="card"><img src="https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=300"><h3>Dust Plug Set</h3><p>Rp 8.000</p><button onclick="addToCart('Dust Plug', 8000)">Tambah</button></div>
+        </div>
+    </section>
+
+    <div id="cart-sidebar" class="sidebar">
+        <div class="side-header"><h3>Pesanan Anda</h3><span onclick="toggleCart()" style="cursor:pointer">✕</span></div>
+        <div id="items"></div>
+        <div class="side-footer">
+            <h4 id="total">Total: Rp 0</h4>
+            <button class="btn-wa" onclick="sendWA()">Pesan via WhatsApp</button>
+        </div>
+    </div>
+
+    <footer><p>&copy; 2026 Aksesorismu.shop</p></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
