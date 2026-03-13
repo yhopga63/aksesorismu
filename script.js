@@ -28,5 +28,6 @@ function sendWA() {
     cart.forEach(i => msg += `- ${i.name} (Rp ${i.price.toLocaleString()})\n`);
     msg += `\nTotal: Rp ${total.toLocaleString()}`;
     // Ganti nomor di bawah ini dengan nomor WA kamu
-    window.open(`https://wa.me/628123456789?text=${encodeURIComponent(msg)}`);
+    window.open(`https://wa.me/6282191510425?text=${encodeURIComponent(msg)}`);
+
 }
