@@ -1,33 +1,67 @@
 let cart = [];
-let total = 0;
-
-function toggleCart() {
-    document.getElementById('cart-sidebar').classList.toggle('active');
-}
 
 function addToCart(name, price) {
-    cart.push({ name, price });
+    const itemIndex = cart.findIndex(item => item.name === name);
+    if (itemIndex > -1) {
+        cart[itemIndex].quantity += 1;
+    } else {
+        cart.push({ name, price, quantity: 1 });
+    }
     updateCart();
 }
 
 function updateCart() {
-    const list = document.getElementById('items');
-    list.innerHTML = '';
-    total = 0;
-    cart.forEach(i => {
-        total += i.price;
-        list.innerHTML += `<div class="item-row"><span>${i.name}</span><span>Rp ${i.price.toLocaleString()}</span></div>`;
+    const itemsContainer = document.getElementById('items');
+    const cartCount = document.getElementById('cart-count');
+    const totalDisplay = document.getElementById('total-price');
+    
+    itemsContainer.innerHTML = '';
+    let total = 0;
+    let count = 0;
+
+    cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+        itemsContainer.innerHTML += `
+            <div class="item-row">
+                <span>${item.name} (x${item.quantity})</span>
+                <span>Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</span>
+            </div>
+        `;
     });
-    document.getElementById('cart-count').innerText = cart.length;
-    document.getElementById('total').innerText = "Total: Rp " + total.toLocaleString();
+
+    cartCount.innerText = count;
+    totalDisplay.innerText = `Rp ${total.toLocaleString('id-ID')}`;
 }
 
 function sendWA() {
-    if (cart.length === 0) return alert("Keranjang kosong!");
-    let msg = "Halo Aksesorismu.shop, saya mau order:\n";
-    cart.forEach(i => msg += `- ${i.name} (Rp ${i.price.toLocaleString()})\n`);
-    msg += `\nTotal: Rp ${total.toLocaleString()}`;
-    // Ganti nomor di bawah ini dengan nomor WA kamu
-    window.open(`https://wa.me/6282191510425?text=${encodeURIComponent(msg)}`);
+    if (cart.length === 0) {
+        alert("Keranjang masih kosong!");
+        return;
+    }
 
+    // GANTI NOMOR DI BAWAH INI DENGAN NOMOR WA ANDA
+    let nomorWA = "6282191510425"; // Sesuaikan kembali dengan nomor Anda
+    
+    let pesan = "*PESANAN BARU - AKSESORISMU.SHOP*\n";
+    pesan += "------------------------------------------\n\n";
+    
+    cart.forEach(item => {
+        pesan += `✅ *${item.name}* (x${item.quantity})\n`;
+    });
+
+    let totalHarga = 0;
+    cart.forEach(item => totalHarga += item.price * item.quantity);
+
+    pesan += `\n💰 *Total: Rp ${totalHarga.toLocaleString('id-ID')}*`;
+    pesan += "\n\n------------------------------------------\n";
+    pesan += "*Tolong isi tipe/merek HP Anda di sini:*\n";
+    pesan += "✍️ Tipe HP: "; // Pembeli tinggal ketik di sini
+
+    const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(pesan)}`;
+    window.open(url, '_blank');
+}
+
+function toggleCart() {
+    document.querySelector('.sidebar').classList.toggle('active');
 }
